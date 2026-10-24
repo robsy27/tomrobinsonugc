@@ -78,6 +78,12 @@ looping video, and they always split the width equally:
   poster: "assets/img/hero-golf.jpg", alt: "..." }
 ```
 
+`focus` is where the panel crops from when it is narrow. A phone shows each panel at
+roughly 125px wide, so `object-fit: cover` throws away most of the width — if your subject
+sits left of centre, lower the first number (`"26% 40%"` keeps someone on the left in
+frame). `"50% 50%"` is the plain centre. It barely matters on desktop, where the panels
+are wide enough that almost nothing is cropped.
+
 Keep clips short (2-4 seconds), vertical, and under about 2MB — they are heavily darkened
 behind the type, so quality matters far less than file size. The poster is what shows
 before the video loads and on phones that block autoplay. Videos pause when the hero

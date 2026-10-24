@@ -590,13 +590,17 @@ const PROFILE = {
   },
 
   /* The hero background: three equal panels of real footage behind the type.
-     kind: "image" or "video". Videos autoplay muted and loop; the poster shows first. */
+     kind: "image" or "video". Videos autoplay muted and loop; the poster shows first.
+     focus: where to crop from when the panel is narrow (phones crop the sides hard).
+     "50% 50%" is the centre; lower the first number to keep a subject on the left. */
   heroMedia: [
-    { kind: "image", label: "Run",    src: "assets/img/hero-run.jpg",
+    { kind: "image", label: "Run",    src: "assets/img/hero-run.jpg", focus: "50% 35%",
       alt: "Tom Robinson racing, number 794 on his vest" },
     { kind: "video", label: "Golf",   src: "assets/video/hero-golf.mp4", poster: "assets/img/hero-golf.jpg",
+      focus: "46% 50%",
       alt: "Tom Robinson driving off the tee with the Alps behind" },
     { kind: "video", label: "Travel", src: "assets/video/hero-travel.mp4", poster: "assets/img/hero-travel.jpg",
+      focus: "26% 40%",
       alt: "Tom Robinson on a balcony above the Lauterbrunnen valley, Switzerland" }
   ],
 
@@ -878,9 +882,10 @@ function secHead(num, kicker, title, titleRed, note){
 
 function heroWall(){
   return '<div class="herowall" id="herowall">' + PROFILE.heroMedia.map((m, i) => {
+    const pos = m.focus ? ' style="object-position:'+esc(m.focus)+'"' : '';
     const media = m.kind === 'video'
-      ? '<video src="'+esc(m.src)+'" poster="'+esc(m.poster||'')+'" muted loop playsinline preload="metadata" aria-label="'+esc(m.alt)+'"></video>'
-      : '<img src="'+esc(m.src)+'" alt="'+esc(m.alt)+'" decoding="async">';
+      ? '<video src="'+esc(m.src)+'" poster="'+esc(m.poster||'')+'" muted loop playsinline preload="metadata" aria-label="'+esc(m.alt)+'"'+pos+'></video>'
+      : '<img src="'+esc(m.src)+'" alt="'+esc(m.alt)+'" decoding="async"'+pos+'>';
     return '<div class="hw">'+media+
       '<span class="hw-label"><b>'+String(i+1).padStart(2,'0')+'</b>'+esc(m.label)+'</span></div>';
   }).join('') + '</div>';
