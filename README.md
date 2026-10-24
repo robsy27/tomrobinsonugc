@@ -97,49 +97,44 @@ When a campaign lands, fill in the tile value and the note that sits under it.
 
 ---
 
-## Put it on GitHub
+## Where it lives
+
+| | |
+|---|---|
+| Live site | https://tomrobinsonugc.com |
+| Repository | https://github.com/robsy27/tomrobinsonugc |
+| Host | Hostinger, account `u699482556`, served from `public_html` |
+| SSL | Lifetime certificate, HTTPS forced (http:// 301s to https://) |
+
+## Publishing a change
+
+Auto-deployment is already connected: Hostinger watches the `main` branch of the
+repository and redeploys the document root on every push. So:
 
 ```bash
 cd "/Users/tomrobinson/UGC Portfolio"
-git init
-git add .
-git commit -m "UGC portfolio"
-git branch -M main
+git add -A
+git commit -m "what you changed"
+git push
 ```
 
-Create an empty repo at github.com/new (no README, no .gitignore), then:
+Give it a few seconds, then hard-refresh the site (Cmd+Shift+R). Nothing to click in
+hPanel. If a change doesn't show, check the push landed on GitHub first — the deploy only
+ever mirrors what is on `main`.
 
-```bash
-git remote add origin https://github.com/YOUR-USERNAME/ugc-portfolio.git
-git push -u origin main
-```
+Deployment settings live in hPanel under **Websites → tomrobinsonugc.com → Advanced →
+GIT**, if you ever need to point it at a different branch or switch it off.
 
-To update later: `git add . && git commit -m "update" && git push`
+## Images and video
 
----
+Anything in `assets/` is committed to the repository and deployed with the page, so keep
+it lean — the two hero clips are about 1.9MB each, which is the sensible ceiling. The
+`originals/` folder is git-ignored, so your untouched camera files stay on your Mac and
+never reach the server.
 
-## Connect it to your Hostinger domain
+## Before you send the link to a brand
 
-**Option A — Hostinger's GitHub deploy (recommended, auto-updates on push)**
-
-1. hPanel → **Websites** → your domain → **Advanced** → **GIT**
-2. Repository: `https://github.com/YOUR-USERNAME/ugc-portfolio.git`
-   Branch: `main`   Directory: leave blank (deploys to `public_html`)
-3. **Create** → then **Deploy**
-4. Open the **Auto Deployment** option and copy the webhook URL
-5. In GitHub: repo → **Settings** → **Webhooks** → **Add webhook** → paste the URL,
-   content type `application/json`, event: just the push event → **Add webhook**
-
-Every `git push` now redeploys the site.
-
-**Option B — straight upload**
-
-hPanel → **File Manager** → `public_html` → upload `index.html` and the `assets` folder.
-
-**Then, either way**
-
-- hPanel → **Websites** → **SSL** → install the free certificate, and turn on
-  "Force HTTPS" once it's issued.
-- In `index.html`, update `<meta property="og:url">` to your real domain and drop a
-  1200×630 image at `assets/img/og-cover.jpg` so link previews look right.
-- Add `assets/img/apple-touch-icon.png` (180×180) and uncomment that `<link>` in the head.
+- The prices read `£—` and `TBC` until you set them.
+- The Results tiles read `—` until you have campaigns to report.
+- The brand wall is six empty slots.
+- The nine video cards are placeholders; add real clips as you shoot them.
