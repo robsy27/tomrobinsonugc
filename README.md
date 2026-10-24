@@ -103,7 +103,7 @@ When a campaign lands, fill in the tile value and the note that sits under it.
 |---|---|
 | Live site | https://tomrobinsonugc.com |
 | Repository | https://github.com/robsy27/tomrobinsonugc |
-| Host | Hostinger, account `u699482556`, served from `public_html` |
+| Host | Hostinger shared hosting, served from `public_html` |
 | SSL | Lifetime certificate, HTTPS forced (http:// 301s to https://) |
 
 ## Publishing a change
