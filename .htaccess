@@ -14,8 +14,12 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(jpg|jpeg|png|svg|mp4|webp)$">
+  <FilesMatch "\.(jpg|jpeg|png|svg|webp)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # LiteSpeed serves video through its own handler, so force it
+  <FilesMatch "\.(mp4|mov|webm)$">
+    Header always set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache"
