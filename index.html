@@ -447,6 +447,28 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .listy .pls{font:700 .8125rem/1.5 var(--f-mono);color:var(--red)}
 .mini-h{font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--bone)}
 
+/* ---------- booking band ---------- */
+.band{position:relative;z-index:2;background:var(--red);color:#0A0A0A}
+@media (min-width:1100px){.band{margin-right:var(--rail)}}
+.band-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:18px clamp(24px,4vw,56px);padding-block:clamp(26px,4vh,46px);
+  padding-left:var(--gut);padding-right:var(--gut-r)}
+@media (min-width:1100px){.band-in{padding-left:max(52px,env(safe-area-inset-left,0px));padding-right:34px}}
+.band-copy{display:grid;gap:9px;min-width:0;flex:1 1 320px}
+.band-eyebrow{font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(10,10,10,.68)}
+.band h2{font-family:var(--f-display);text-transform:uppercase;line-height:.88;
+  font-size:clamp(1.9rem,5vw,3.4rem);letter-spacing:.004em}
+.band p{margin:0;font-size:.9375rem;line-height:1.55;color:rgba(10,10,10,.82);max-width:54ch}
+.band-meta{font:400 var(--t-xs)/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(10,10,10,.6)}
+.band-cta{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:var(--bone);
+  padding:17px 24px;font:700 .8125rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;
+  flex:none;transition:transform .25s ease,background .25s ease}
+.band-cta:hover,.band-cta:focus-visible{transform:translateY(-3px);background:#000}
+.band-cta svg{width:15px;height:15px}
+.band :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
 /* ---------- 09 contact ---------- */
 #contact{overflow:hidden}
 .drift{position:absolute;inset:0;z-index:0;opacity:.32;display:flex;flex-direction:column;
@@ -747,6 +769,19 @@ const PROFILE = {
     footNote: "Longer campaigns, retainers and whitelisting priced per brief. Ask."
   },
 
+  /* Book a call.
+     `url` is a Google Calendar appointment schedule link (calendar.app.google/...).
+     While it is empty the whole band stays off the page rather than showing a dead
+     button — paste the link in and it appears. */
+  booking: {
+    url: "",
+    eyebrow: "Bookings / 15 minutes",
+    headline: "Skip the email chain.",
+    sub: "Fifteen minutes on a call and you'll know whether I'm right for it. Pick a slot that suits you and it lands straight in my calendar.",
+    meta: "15 min · Google Meet · No charge",
+    ctaLabel: "Book a call"
+  },
+
   contact: {
     headline: ["Let's create", "together"],
     sub: "Tell me the product, the platform and the deadline. I'll tell you if I can shift it.",
@@ -1033,6 +1068,21 @@ function renderRates(){
   '</div></section>';
 }
 
+function renderBooking(){
+  const b = PROFILE.booking;
+  if (!b || !b.url) return '';
+  return '<section class="band" id="book"><div class="band-in">'+
+    '<div class="band-copy">'+
+      '<p class="band-eyebrow">'+esc(b.eyebrow)+'</p>'+
+      '<h2>'+esc(b.headline)+'</h2>'+
+      '<p>'+esc(b.sub)+'</p>'+
+      '<p class="band-meta">'+esc(b.meta)+'</p>'+
+    '</div>'+
+    '<a class="band-cta" href="'+esc(b.url)+'" target="_blank" rel="noopener noreferrer">'+
+      esc(b.ctaLabel)+svg('ne')+'</a>'+
+  '</div></section>';
+}
+
 function renderContact(){
   const c = PROFILE.contact, i = PROFILE.identity;
   const tile = '<span class="dtile slot"><span class="sheen" aria-hidden="true"></span><span class="veil" aria-hidden="true"></span></span>';
@@ -1053,6 +1103,9 @@ function renderContact(){
           '<p class="lede rv">'+esc(c.sub)+'</p>'+
           '<div class="contact-actions rv">'+
             '<a class="btn" href="'+esc(mailtoHref())+'">'+svg('mail')+esc(c.ctaLabel)+'</a>'+
+            (PROFILE.booking && PROFILE.booking.url
+              ? '<a class="btn ghost" href="'+esc(PROFILE.booking.url)+'" target="_blank" rel="noopener noreferrer">'+
+                esc(PROFILE.booking.ctaLabel)+svg('ne')+'</a>' : '')+
             copyEmail()+
           '</div>'+
           '<div class="rv">'+socialRow()+'</div>'+
@@ -1071,7 +1124,7 @@ function build(){
   $('#main').innerHTML =
     renderIntro() + renderAbout() +
     PROFILE.work.map(renderWork).join('') +
-    renderBrands() + renderResults() + renderRates() + renderContact();
+    renderBrands() + renderResults() + renderRates() + renderBooking() + renderContact();
 }
 
 /* ---------- rulers ---------- */

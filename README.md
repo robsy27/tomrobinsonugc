@@ -131,6 +131,27 @@ ever mirrors what is on `main`.
 Deployment settings live in hPanel under **Websites → tomrobinsonugc.com → Advanced →
 GIT**, if you ever need to point it at a different branch or switch it off.
 
+## Book a call
+
+The red band above the closing section is driven by `booking` in the config:
+
+```js
+booking: {
+  url: "https://calendar.app.google/XXXXXXXX",   // your Google booking page
+  headline: "Skip the email chain.",
+  ...
+}
+```
+
+While `url` is empty the whole band stays off the page — no dead button on a live site.
+Paste the link in, push, and it appears, along with a second "Book a call" button in the
+closing section. Bookings land in tomrobinson2727@gmail.com with a Google Meet link.
+
+To create or change the booking page: Google Calendar on desktop → **Create** →
+**Appointment schedule**. A free personal Google account allows one schedule; multiple
+schedules and taking payment need Workspace. There is no API for appointment schedules,
+so this part has to be done in the Google Calendar interface.
+
 ## Images and video
 
 Anything in `assets/` is committed to the repository and deployed with the page, so keep
