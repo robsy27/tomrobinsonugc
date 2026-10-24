@@ -147,10 +147,17 @@ While `url` is empty the whole band stays off the page — no dead button on a l
 Paste the link in, push, and it appears, along with a second "Book a call" button in the
 closing section. Bookings land in tomrobinson2727@gmail.com with a Google Meet link.
 
-To create or change the booking page: Google Calendar on desktop → **Create** →
-**Appointment schedule**. A free personal Google account allows one schedule; multiple
-schedules and taking payment need Workspace. There is no API for appointment schedules,
-so this part has to be done in the Google Calendar interface.
+Any booking provider works — the band only links out, so Google Calendar, Cal.com and
+Calendly are interchangeable as far as the site is concerned.
+
+- **Google Calendar** (Create → Appointment schedule, desktop only): free personal
+  accounts get one booking page. Email reminders, payments, co-hosts and multi-calendar
+  conflict checking are paid extras.
+- **Cal.com free**: unlimited event types, syncs both ways with Google Calendar.
+- **Calendly free**: one event type, one calendar connection.
+
+There is no API for Google's appointment schedules, so that one has to be set up by hand
+in the Calendar interface.
 
 ## Images and video
 

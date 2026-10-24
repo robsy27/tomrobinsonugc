@@ -770,9 +770,10 @@ const PROFILE = {
   },
 
   /* Book a call.
-     `url` is a Google Calendar appointment schedule link (calendar.app.google/...).
-     While it is empty the whole band stays off the page rather than showing a dead
-     button — paste the link in and it appears. */
+     `url` is any public booking page — Google Calendar (calendar.app.google/...),
+     Cal.com, Calendly, whatever you end up using. The band just links out, so the
+     provider makes no difference to the site. While `url` is empty the whole band
+     stays off the page rather than showing a dead button. */
   booking: {
     url: "",
     eyebrow: "Bookings / 15 minutes",
