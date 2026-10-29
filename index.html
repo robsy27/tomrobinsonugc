@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>Tom Robinson UGC</title>
-<meta name="description" content="Tom Robinson — UGC creator in Cheshire, UK. Short-form video for running, golf and travel brands. @tom.runs.it">
+<title>Tom Robinson — UGC Creator | Running, Golf & Travel</title>
+<meta name="description" content="UGC creator in Cheshire, UK making short-form video for running, golf and travel brands. Scripted, filmed and edited solo. Book a 30-minute call.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://tomrobinsonugc.com/">
 <meta name="theme-color" content="#0A0A0A">
 <meta name="author" content="Tom Robinson">
@@ -13,10 +14,13 @@
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tom Robinson — UGC">
+<meta property="og:locale" content="en_GB">
 <meta property="og:title" content="Tom Robinson — UGC Creator">
 <meta property="og:description" content="Short-form video for running, golf and travel brands. Shot on real miles, real rounds and real trips.">
 <meta property="og:url" content="https://tomrobinsonugc.com/">
 <meta property="og:image" content="https://tomrobinsonugc.com/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tom Robinson, UGC creator, Cheshire UK">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tom Robinson — UGC Creator">
@@ -24,10 +28,11 @@
 <meta name="twitter:image" content="https://tomrobinsonugc.com/assets/img/og-cover.jpg">
 
 <!-- Favicon placeholder: swap for assets/favicon.svg when you have a mark -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Cpath d='M12 44V20h10M12 32h8' stroke='%23E9E5DC' stroke-width='6' fill='none'/%3E%3Cpath d='M34 44V20h8c5 0 8 3 8 7s-3 7-8 7h-8m10 0 8 10' stroke='%23F0341C' stroke-width='6' fill='none'/%3E%3C/svg%3E">
-<!-- Add assets/img/apple-touch-icon.png (180x180), then uncomment:
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"> -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Cpath d='M15 17L32 32L15 47Z' fill='%23E9E5DC'/%3E%3Cpath d='M33 17L50 32L33 47Z' fill='%23F0341C'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
+<link rel="preload" as="image" href="assets/img/hero-run.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap">
@@ -88,7 +93,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::selection{background:var(--red);color:#fff}
 
 .skip{position:fixed;top:-100px;left:12px;z-index:999;background:var(--red);color:#fff;
-  padding:10px 16px;font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+  display:inline-flex;align-items:center;min-height:44px;
+  padding:14px 18px;font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 
 /* ---------- atmosphere ---------- */
@@ -146,7 +152,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .topnav a:hover,.topnav a.on{color:var(--red)}
 .topnav a:hover em,.topnav a.on em{color:var(--red)}
 
-.burger{display:flex;align-items:center;gap:9px;border:1px solid var(--line);padding:7px 12px;
+/* sits in the top strip, above every face in the hero footage */
+.book-sq{display:none;flex:none;width:58px;height:58px;background:var(--red);color:#0A0A0A;
+  align-items:center;justify-content:center;text-align:center;
+  font:700 9px/1.3 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;
+  transition:transform .25s ease,filter .25s ease}
+.book-sq.on{display:flex}
+.book-sq:hover,.book-sq:focus-visible{transform:translateY(-2px);filter:brightness(1.09)}
+@media (max-width:859px){.book-sq{width:56px;height:56px;font-size:8.5px;letter-spacing:.05em}}
+/* keep it clear of the corner crosshair */
+@media (min-width:860px){.topbar{padding-right:max(42px,env(safe-area-inset-right,0px))}}
+
+.burger{display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;
+  border:1px solid var(--line);padding:8px 14px;
   font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
 .burger i{display:block;width:16px;height:9px;position:relative}
 .burger i::before,.burger i::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:var(--bone);transition:transform .3s}
@@ -154,6 +172,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .burger[aria-expanded="true"] i::before{transform:translateY(3.75px) rotate(45deg)}
 .burger[aria-expanded="true"] i::after{transform:translateY(-3.75px) rotate(-45deg)}
 @media (min-width:1024px){.burger{display:none}}
+@media (max-width:559px){
+  .wordmark span{display:none}
+  .burger span{display:none}
+  .burger{padding:8px;width:44px}
+}
 
 /* ---------- mobile drawer ---------- */
 .drawer{position:fixed;inset:0;z-index:55;background:var(--ink);
@@ -199,7 +222,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 .ico{width:15px;height:15px;flex:none}
 .socials{display:flex;gap:9px;flex-wrap:wrap}
-.socials a{width:36px;height:36px;border:1px solid var(--line);display:grid;place-items:center;
+.socials a{width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;
   transition:border-color .25s,color .25s,transform .25s}
 .socials a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
 .socials svg{width:17px;height:17px}
@@ -245,7 +268,7 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .chip:hover{border-color:var(--red);color:var(--bone)}
 
 .copybtn{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--line);
-  padding:12px 15px;font:400 .8125rem/1 var(--f-mono);letter-spacing:.06em;
+  min-height:44px;padding:13px 15px;font:400 .8125rem/1 var(--f-mono);letter-spacing:.06em;
   transition:border-color .25s,background .25s;max-width:100%}
 .copybtn:hover{border-color:var(--red)}
 .copybtn svg{width:16px;height:16px;color:var(--red);flex:none}
@@ -482,7 +505,7 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 @media (min-width:900px){.contact-grid{grid-template-columns:clamp(180px,20vw,260px) minmax(0,1fr)}}
 .contact-portrait{position:relative;border:1px solid var(--line);aspect-ratio:4/5;overflow:hidden;background:var(--ink-3)}
 .contact-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.totop{display:inline-flex;align-items:center;gap:9px;transform:rotate(-1.5deg)}
+.totop{display:inline-flex;align-items:center;gap:9px;min-height:44px;transform:rotate(-1.5deg)}
 
 footer{position:relative;z-index:2;border-top:1px solid var(--line);
   padding:22px var(--gut-r) calc(26px + env(safe-area-inset-bottom,0px)) var(--gut);
@@ -521,6 +544,39 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);
   .slot .sheen,.drift-row,.soon i{animation:none!important}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Tom Robinson",
+    "alternateName": "@tom.runs.it",
+    "jobTitle": "UGC Creator",
+    "description": "UGC creator making short-form video for running, golf and travel brands.",
+    "email": "mailto:tomrobinson2727@gmail.com",
+    "url": "https://tomrobinsonugc.com/",
+    "image": "https://tomrobinsonugc.com/assets/img/og-cover.jpg",
+    "address": { "@type": "PostalAddress", "addressRegion": "Cheshire", "addressCountry": "GB" },
+    "knowsAbout": ["User-generated content", "Short-form video", "Running", "Golf", "Travel"],
+    "sameAs": [
+      "https://www.instagram.com/tom.runs.it/",
+      "https://www.tiktok.com/@tom.runs.it"
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "UGC video production",
+        "serviceType": "Short-form vertical video for brands",
+        "areaServed": "Worldwide",
+        "provider": { "@type": "Person", "name": "Tom Robinson" }
+      }
+    }
+  }
+}
+</script>
 </head>
 <body>
 
@@ -539,7 +595,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);
 <header class="topbar" id="topbar">
   <div class="wordmark" id="topMark"></div>
   <nav class="topnav" id="topnav" aria-label="Sections"></nav>
-  <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer">
+  <a class="book-sq" id="bookSq" hidden>Book<br>a call</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
     <span>Menu</span><i aria-hidden="true"></i>
   </button>
 </header>
@@ -548,6 +605,18 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);
 <aside class="rail" id="rail" aria-label="Profile"></aside>
 
 <main id="main"></main>
+<noscript>
+  <div style="padding:32px 18px;max-width:70ch;margin:0 auto;color:#E9E5DC">
+    <h1 style="font-family:Anton,sans-serif;text-transform:uppercase">Tom Robinson — UGC Creator</h1>
+    <p>Short-form video for running, golf and travel brands. Shot on real miles, real rounds
+    and real trips. Scripted, filmed and edited by one bloke from Cheshire who was going anyway.</p>
+    <p>Based in Cheshire, UK. Working with brands anywhere.</p>
+    <p>Email: <a href="mailto:tomrobinson2727@gmail.com" style="color:#F0341C">tomrobinson2727@gmail.com</a></p>
+    <p>Instagram and TikTok: <a href="https://www.instagram.com/tom.runs.it/" style="color:#F0341C">@tom.runs.it</a></p>
+    <p>Packages: single UGC video, three-video bundle, photo pack. Add-ons for extra hooks,
+    raw footage, paid usage rights and rush delivery.</p>
+  </div>
+</noscript>
 <footer id="foot"></footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video player" hidden>
@@ -578,7 +647,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);
 const PROFILE = {
 
   meta: {
-    tabTitle: "Tom Robinson UGC",
+    tabTitle: "Tom Robinson — UGC Creator | Running, Golf & Travel",
     indexLabel: "UGC Portfolio",
     year: "2026",
     footerNote: "Built to be watched on a phone."
@@ -627,8 +696,8 @@ const PROFILE = {
   ],
 
   socials: [
-    { name: "Instagram", icon: "instagram", handle: "@tom.runs.it", url: "https://instagram.com/" },
-    { name: "TikTok",    icon: "tiktok",    handle: "@tom.runs.it", url: "https://tiktok.com/" }
+    { name: "Instagram", icon: "instagram", handle: "@tom.runs.it", url: "https://www.instagram.com/tom.runs.it/" },
+    { name: "TikTok",    icon: "tiktok",    handle: "@tom.runs.it", url: "https://www.tiktok.com/@tom.runs.it" }
   ],
 
   about: {
@@ -900,6 +969,17 @@ function buildNav(){
     photoBlock(PROFILE.photos.rail, 'rail-thumb')+
     '<div class="rail-foot">'+copyEmail()+'</div>';
 
+  const bk = PROFILE.booking;
+  const sq = $('#bookSq');
+  if (bk && bk.url) {
+    sq.href = bk.url;
+    sq.target = '_blank';
+    sq.rel = 'noopener noreferrer';
+    sq.setAttribute('aria-label', bk.ctaLabel + ' — ' + bk.meta + ' (opens in a new tab)');
+    sq.hidden = false;
+    sq.classList.add('on');
+  }
+
   $('#foot').innerHTML =
     '<span>&copy; '+esc(PROFILE.meta.year)+' '+esc(PROFILE.identity.first)+' '+esc(PROFILE.identity.last)+' — '+esc(PROFILE.identity.handle)+'</span>'+
     '<span>'+esc(PROFILE.meta.footerNote)+'</span>';
@@ -938,7 +1018,7 @@ function renderIntro(){
       '</div>'+
       '<div class="hero-row">'+
         '<div style="min-width:0">'+
-          '<h1 class="display hero-name">'+words(i.first)+'<span class="red">'+words(i.last)+'</span></h1>'+
+          '<h1 class="display hero-name">'+words(i.first)+' <span class="red">'+words(i.last)+'</span></h1>'+
           brush()+
         '</div>'+
         photoBlock(PROFILE.photos.hero, 'hero-portrait rv-hero')+
@@ -1306,7 +1386,13 @@ function heroVideos(){
   if (!wall) return;
   const vids = $$('video', wall);
   if (!vids.length) return;
-  if (reduced) { vids.forEach(v => { v.removeAttribute('loop'); v.pause(); }); return; }
+  const conn = navigator.connection || {};
+  const frugal = conn.saveData === true || /^(slow-2g|2g)$/.test(conn.effectiveType || '');
+  if (reduced || frugal) {
+    // posters still show, so the panels look the same, just still
+    vids.forEach(v => { v.removeAttribute('loop'); v.removeAttribute('autoplay'); v.pause(); });
+    return;
+  }
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
       vids.forEach(v => {

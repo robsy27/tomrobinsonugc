@@ -159,6 +159,25 @@ Calendly are interchangeable as far as the site is concerned.
 There is no API for Google's appointment schedules, so that one has to be set up by hand
 in the Calendar interface.
 
+## SEO
+
+Already in place: a descriptive `<title>` and meta description, `robots.txt`,
+`sitemap.xml`, canonical URL, Open Graph and Twitter cards with a 1200x630 image,
+Person/ProfilePage JSON-LD, and a `<noscript>` block so crawlers that don't run
+JavaScript still see who you are and what you sell.
+
+Two things worth doing yourself, which need accounts rather than code:
+
+1. **Google Search Console** — add tomrobinsonugc.com, verify, submit
+   `https://tomrobinsonugc.com/sitemap.xml`. Without this Google finds the site
+   eventually; with it, in days.
+2. **Link to the site** from your Instagram and TikTok bios. For a new domain,
+   those links are most of what Google has to go on.
+
+If you change the title or description, change them in the `<head>` *and* in
+`PROFILE.meta.tabTitle` — the script sets the tab title from the config, so they
+need to agree.
+
 ## Images and video
 
 Anything in `assets/` is committed to the repository and deployed with the page, so keep
